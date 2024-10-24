@@ -1,53 +1,37 @@
 import {Cliente} from "./Cliente.js"
 import {ContaCorrente} from "./ContaCorrente.js"
 
-const cliente1 = new Cliente();
-cliente1.nome = "ricardo";
-cliente1.cpf = 50903908867;
+const cliente1 = new Cliente("ricardo", 50903908867);
+const conta1 = new ContaCorrente(cliente1, 1001)
 
-const contaCorrenteRicardo = new ContaCorrente()
-contaCorrenteRicardo.agencia = 1001
-contaCorrenteRicardo.cliente = cliente1
+//crio uma intancia de Cliente
+const cliente2 = new Cliente("Alice", 88822233309);
 
-
-const cliente2 = new Cliente();
-cliente2.nome = "Alice";
-cliente2.cpf = 88822233309;
-
-const conta2 = new ContaCorrente();
-conta2.cliente = cliente2
-
-
-
-
+//atribuo minha instancia de Cliente na propriedade cliente da ContaCorrente (Estou usando verificações para saber se o valor que estou passando para meu atributo cliente é do tipo Cliente())
+const conta2 = new ContaCorrente(cliente2, 1001);
 
 
 //Chamadas
-/*const deposito = contaCorrenteRicardo.depositar(300)
+/*const deposito = conta1.depositar(300)
 
-contaCorrenteRicardo.sacar(50)
+conta1.sacar(50)
 
-contaCorrenteRicardo.depositar(200)
+conta1.depositar(200)
 
 console.log(deposito)
 */
 
-contaCorrenteRicardo.depositar(500)
+
+conta1.depositar(500)
 conta2.depositar(500)
-conta2.agencia = 1001
-console.log(contaCorrenteRicardo._saldo)
-
-console.log(contaCorrenteRicardo)
-
-console.log(conta2)
 
 let valorTrans = 200
-conta2.transferir(valorTrans, contaCorrenteRicardo)
+conta2.transferir(valorTrans, conta1)
 
-console.log(contaCorrenteRicardo)
+
+console.log(conta1)
 
 console.log(conta2)
 
-console.log(conta2.cliente)
+console.log(ContaCorrente.numeroDeContas)
 
-console.log(conta2.saldo)
